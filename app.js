@@ -7,9 +7,7 @@ const app = express();
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/WikiDB", {
-  useNewUrlParser: true
-});
+mongoose.connect("mongodb://localhost:27017/WikiDB", { useUnifiedTopology: true } );
 
 const articleSchema = {
   questions: String,
@@ -29,11 +27,7 @@ app.get("/articles", function(req, res) {
   });
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-app.listen(port);
-app.listen(port, function() {
-  console.log("Server started successfully...!");
-});
+app.listen(process.env.PORT);
+// app.listen(port, function() {
+//   console.log("Server started successfully...!");
+// });
