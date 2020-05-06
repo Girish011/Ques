@@ -7,9 +7,7 @@ const app = express();
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/WikiDB", {
-  useNewUrlParser: true
-});
+mongoose.connect("mongodb://localhost:27017/WikiDB", { useUnifiedTopology: true } );
 
 const articleSchema = {
   questions: String,
